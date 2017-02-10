@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/tab_margin">
+
+    <!-- Setting @android:id/icon will work with Tab.setIcon -->
+    <ImageView
+        android:id="@android:id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_icon_size"
+        android:layout_gravity="bottom"/>
+
+</FrameLayout>

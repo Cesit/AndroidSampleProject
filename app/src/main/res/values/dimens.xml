@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_margin">14dp</dimen>
+    <dimen name="app_vertical_spacing">7dp</dimen>
+
+    <dimen name="tab_icon_size">40dp</dimen>
+    <dimen name="tab_margin">4dp</dimen>
+
+    <dimen name="separator">1dp</dimen>
+</resources>
