@@ -10,7 +10,10 @@ import java.util.List;
 import dk.cesit.androidsampleproject.models.Item;
 
 /**
- * Created by Cesit on 10/02/2017.
+ * Created by Cesit on 10/02/2017.<br>
+ * Through Session, objects can access the latest known state of the app.<br>
+ * Session reads the state from {@link Cache} which can only be changed by {@link BackendService}.<br>
+ * Cache + Session could be replaced by a database like SQLite or Realm.<br>
  */
 
 public class Session {
