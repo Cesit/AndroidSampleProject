@@ -35,11 +35,8 @@ public class ItemListFragment extends Fragment implements ItemAdapter.Callbacks,
     private ItemListViewModel mViewModel;
     private ItemAdapter mAdapter;
 
-    @BindView(R.id.recycler_view)
-    RecyclerView mRecyclerView;
-
-    @BindView(R.id.swipe_refresh)
-    SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.swipe_refresh) SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Nullable
     @Override

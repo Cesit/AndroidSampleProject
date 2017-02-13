@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import dk.cesit.androidsampleproject.R;
 import dk.cesit.androidsampleproject.models.Item;
 
@@ -37,9 +39,9 @@ public class ItemDetailActivity extends AppCompatActivity implements ItemDetailV
 
     private ItemDetailViewModel mViewModel;
 
-    private Toolbar mToolbar;
-    private TextView mIdView;
-    private TextView mTitleView;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.text_id) TextView mIdView;
+    @BindView(R.id.text_title) TextView mTitleView;
 
     private ActionBar mActionBar;
 
@@ -47,10 +49,7 @@ public class ItemDetailActivity extends AppCompatActivity implements ItemDetailV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_activity);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mIdView = (TextView) findViewById(R.id.text_id);
-        mTitleView = (TextView) findViewById(R.id.text_title);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();

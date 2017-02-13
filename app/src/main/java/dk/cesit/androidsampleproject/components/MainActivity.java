@@ -24,14 +24,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     private static final String STATE_CURRENT_TAB = "CurrentTab";
 
-    @BindView(R.id.fragment_pager)
-    ViewPager mFragmentViewPager;
-
-    @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
-
-    @BindView(R.id.action_button)
-    FloatingActionButton mActionButton;
+    @BindView(R.id.fragment_pager) ViewPager mFragmentViewPager;
+    @BindView(R.id.tab_layout) TabLayout mTabLayout;
+    @BindView(R.id.action_button) FloatingActionButton mActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

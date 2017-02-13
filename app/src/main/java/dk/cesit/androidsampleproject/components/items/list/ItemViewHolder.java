@@ -20,8 +20,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
 
     private int mPosition;
 
-    @BindView(R.id.text_title)
-    TextView mTitleView;
+    @BindView(R.id.text_title) TextView mTitleView;
 
     public ItemViewHolder(ViewGroup parent, final OnListElementClickListener clickListener) {
         super(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_element, parent, false));
