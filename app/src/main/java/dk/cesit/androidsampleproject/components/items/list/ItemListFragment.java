@@ -11,15 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dk.cesit.androidsampleproject.R;
 import dk.cesit.androidsampleproject.components.items.detail.ItemDetailActivity;
-import dk.cesit.androidsampleproject.components.items.detail.ItemDetailViewModel;
 import dk.cesit.androidsampleproject.models.Item;
 
 /**
@@ -72,6 +69,11 @@ public class ItemListFragment extends Fragment implements ItemAdapter.Callbacks,
         super.onPause();
     }
 
+    public void presentCreateItemPopup() {
+        // Just create an item with a generic title right away instead.
+        mViewModel.createItem(getActivity(), "Created item");
+    }
+
     //region Interfaces
 
     @Override
@@ -81,7 +83,7 @@ public class ItemListFragment extends Fragment implements ItemAdapter.Callbacks,
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getActivity(), "Refresh", Toast.LENGTH_SHORT).show();
+        mViewModel.load(getActivity(), false);
     }
 
     @Override
@@ -93,6 +95,9 @@ public class ItemListFragment extends Fragment implements ItemAdapter.Callbacks,
     public void onItemsLoaded(List<Item> items) {
         mAdapter.setItems(items);
         mAdapter.notifyDataSetChanged();
+        if(mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
