@@ -1,5 +1,7 @@
 package dk.cesit.androidsampleproject.backend.endpoints;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,11 +18,13 @@ import dk.cesit.androidsampleproject.util.Result;
 
 public class MockEndpoints implements Endpoints {
 
+    private static final String TAG = MockEndpoints.class.getSimpleName();
+
     private static int MOCK_DELAY = 2000;
 
     private Timer mMockDelayTimer = new Timer();
 
-    private List<Item> mItems;
+    private List<Item> mMockBackendItems;
 
     public MockEndpoints() {
         List<Item> items = new ArrayList<Item>();
@@ -28,7 +32,7 @@ public class MockEndpoints implements Endpoints {
         items.add(new Item(UUID.randomUUID().toString(), "Item 2"));
         items.add(new Item(UUID.randomUUID().toString(), "Item 3"));
         items.add(new Item(UUID.randomUUID().toString(), "Item 4"));
-        mItems = items;
+        mMockBackendItems = items;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class MockEndpoints implements Endpoints {
         this.execute(new TimerTask() {
             @Override
             public void run() {
-                result.onSuccess(mItems);
+                result.onSuccess(new ArrayList<>(mMockBackendItems));
             }
         });
     }
@@ -49,7 +53,7 @@ public class MockEndpoints implements Endpoints {
         }
 
         Item createdItem = new Item(UUID.randomUUID().toString(), item.title);
-        mItems.add(createdItem);
+        mMockBackendItems.add(createdItem);
         result.onSuccess(createdItem);
     }
 
@@ -58,6 +62,6 @@ public class MockEndpoints implements Endpoints {
     }
 
     private boolean didEncounterRandomError() {
-        return new Random().nextInt(3) + 1 > 1;
+        return new Random().nextInt(3) + 1 == 1;
     }
 }

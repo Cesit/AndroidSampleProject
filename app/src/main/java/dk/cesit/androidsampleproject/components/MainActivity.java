@@ -3,8 +3,10 @@ package dk.cesit.androidsampleproject.components;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -61,6 +63,16 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         super.onSaveInstanceState(bundle);
     }
 
+    private void onActionButtonClick(FloatingActionButton button) {
+        int position = mTabLayout.getSelectedTabPosition();
+        if(mFragmentViewPager.getAdapter() instanceof MainFragmentsAdapter) {
+            Fragment fragment = ((MainFragmentsAdapter) mFragmentViewPager.getAdapter()).getItem(position);
+            if(fragment instanceof ItemListFragment) {
+                ((ItemListFragment) fragment).presentCreateItemPopup();
+            }
+        }
+    }
+
     //region Interfaces
 
     @Override
@@ -83,11 +95,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onClick(View v) {
-        int position = mTabLayout.getSelectedTabPosition();
-        switch (position) {
-            case 0:
-                Toast.makeText(this, "Create new item!", Toast.LENGTH_SHORT).show();
-                break;
+        if(v instanceof FloatingActionButton) {
+            onActionButtonClick((FloatingActionButton) v);
+        }
+        else {
+            Log.w(TAG, "Unknown button clicked");
         }
     }
 

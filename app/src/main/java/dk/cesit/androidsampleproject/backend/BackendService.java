@@ -153,7 +153,6 @@ public class BackendService extends IntentService {
                     Cache.getInstance().mItems = new ArrayList<Item>();
                 }
                 Cache.getInstance().mItems.add(content);
-                Log.d(TAG, "Items cache count: "+Cache.getInstance().mItems.size());
                 broadcastSuccess(requestId, RequestType.CREATE_ITEM);
             }
 

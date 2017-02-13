@@ -45,7 +45,8 @@ public class ItemListViewModel {
                 return;
             }
 
-            if(result.requestType == BackendService.RequestType.GET_ITEMS) {
+            if(result.requestType == BackendService.RequestType.GET_ITEMS ||
+                    result.requestType == BackendService.RequestType.CREATE_ITEM) {
                 mListener.onItemsLoaded(Session.getInstance().getCachedItems());
             }
             else {
@@ -83,5 +84,10 @@ public class ItemListViewModel {
         else {
             mListener.onItemsLoaded(items);
         }
+    }
+
+    public void createItem(Context context, String title) {
+        Item item = new Item("new", title);
+        BackendService.createItem(context, item);
     }
 }
